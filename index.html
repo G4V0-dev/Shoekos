@@ -1,187 +1,348 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shoekos</title>
-  <link rel="stylesheet" href="./assets/css/estilos.css">
-  <link rel="stylesheet" href="./assets/css/css_bootstrap/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Shoekos — Sneaker's Edición Limitada</title>
+  <meta name="description" content="Shoekos: archivo curado de sneakers de colección, ediciones limitadas y piezas de época. Bogotá, Colombia.">
+  <meta property="og:title" content="Shoekos — Sneaker's Edición Limitada">
+  <meta property="og:description" content="Archivo curado de sneakers de colección. Drops limitados y piezas de época autenticadas.">
+  <meta property="og:image" content="./assets/img/og-shoekos.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/site.css">
 </head>
 
 <body>
 
-<!-- INICIO NAVBAR-->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i><b>Shoekos</b></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./contactenos.html">Contáctenos</a>
-        </li>
-        <li class="nav-item">
-          <a id="cart-link" class="nav-link disabled" href="./compras.html">Carrito de Compras</a>
-        </li>
-      </ul>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="./index.html">Shoekos</a>
+
+      <nav class="nav__links" data-nav-links aria-label="Principal">
+        <a class="nav__link" href="./index.html" aria-current="page">Colección</a>
+        <a class="nav__link" href="#archivo">Archivo</a>
+        <a class="nav__link" href="./contactenos.html">Contáctenos</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Activar modo claro">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+          </svg>
+        </button>
+
+        <button class="icon-btn" type="button" data-search-toggle aria-label="Buscar" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.5-3.5"></path>
+          </svg>
+        </button>
+
+        <a class="icon-btn" href="./compras.html" aria-label="Carrito de compras">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M5 7h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z"></path>
+            <path d="M9 7V5.5a3 3 0 0 1 6 0V7"></path>
+          </svg>
+          <span class="nav__count" data-cart-count hidden>0</span>
+        </a>
+
+        <button class="icon-btn nav__toggle" type="button" data-nav-toggle aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span>Envío gratis desde 500.000</span>
+        <span>Autenticidad garantizada</span>
+        <span>Cambios en 30 días</span>
+        <span>Drops exclusivos semanales</span>
+      </div>
+      <div class="marquee__group">
+        <span>Envío gratis desde 500.000</span>
+        <span>Autenticidad garantizada</span>
+        <span>Cambios en 30 días</span>
+        <span>Drops exclusivos semanales</span>
+      </div>
     </div>
   </div>
-</nav>
-<!-- FIN NAVBAR-->
 
-<h1>Sneaker's Edición <i>LIMITADA</i></h1>
-<p class="intro-text">
-  En Calzado Ilimitado, nuestro compromiso es brindarte no solo la mejor calidad, sino también un estilo que se adapte a
-  ti. Nos apasiona ofrecerte una experiencia de compra única, con una amplia variedad de modelos que se ajustan a tus
-  necesidades y gustos. Ya sea que busques comodidad, elegancia o rendimiento, estamos aquí para acompañarte en cada
-  paso de tu camino. ¡Gracias por elegirnos y confiar en nosotros para caminar con estilo!
-</p>
-<hr>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <p class="eyebrow eyebrow--volt">● Drop 014 — Archivo 1999/2022</p>
+          <h1 class="display hero__title">Sneaker's<br>Edición<br><em>Limitada</em></h1>
+          <p class="hero__copy">
+            Curaduría arqueológica de calzado de época, ediciones inéditas y prototipos históricos
+            recuperados bajo rigurosos protocolos de conservación.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#coleccion">Explorar drop</a>
+            <a class="btn btn--ghost" href="#archivo">Ver archivo</a>
+          </div>
+          <p class="hero__meta"><span>01</span> / <span>06</span> <i></i> <span>Piezas verificadas</span></p>
+        </div>
 
-<!-- Contenedor para las cartas -->
-<div class="card-container">
-  <!-- INICIO CARD 1-->
-  <div class="card">
-    <img src="./assets/img/img1.jpg" class="card-img-top" alt="Nike Dunk High">
-    <div class="card-body">
-      <h6 class="card-title">Nike Dunk High <i>"Wu Tang."</i></h6>
-      <ul>
-        <li><b>Talla: </b>US 7.5</li>
-        <li><b>Tipo: </b>Basquetbol</li>
-        <li><b>Modelo: </b>Dunk</li>
-        <li><b>Materiales: </b>Cuero, Caucho, Algodón Sintético</li>
-        <li><b>Año: </b>1999</li>
-      </ul>
-      <p class="card-text">
-      <h3>27.500 USD.</h3>
-      </p>
-      <a class="btn btn-primary add-to-cart" data-product="Nike Dunk High" data-price="27500">Añadir al Carrito</a>
+        <article class="spotlight">
+          <div class="spotlight__head">
+            <span class="eyebrow">Pieza 014 · Archivo central</span>
+            <span class="badge badge--red">Limitada</span>
+          </div>
+          <div class="spotlight__media">
+            <img src="./assets/img/nike-dunk-high-wu-tang.webp" alt="Nike Dunk High Wu Tang en pedestal de concreto" width="1408" height="768" fetchpriority="high">
+          </div>
+          <div class="spotlight__foot">
+            <span>Estado: preservado 10/10</span>
+            <span class="spotlight__price">1.800 USD</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FILTROS -->
+    <section class="filters" id="coleccion" aria-label="Filtros de catálogo">
+      <div class="container">
+        <div class="filters__inner">
+          <div class="chips" role="group" aria-label="Filtrar por tipo">
+            <button class="chip" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+            <button class="chip" type="button" data-filter="basquetbol" aria-pressed="false">Basquetbol</button>
+            <button class="chip" type="button" data-filter="casual" aria-pressed="false">Casual</button>
+            <button class="chip" type="button" data-filter="running" aria-pressed="false">Running</button>
+            <button class="chip" type="button" data-filter="deportivo" aria-pressed="false">Deportivo</button>
+          </div>
+          <div class="filters__right">
+            <span class="filters__count"><strong data-product-count>6</strong> piezas</span>
+            <label class="sr-only" for="sort">Ordenar</label>
+            <select class="sort" id="sort" data-sort>
+              <option value="destacados">Ordenar: destacados</option>
+              <option value="precio-asc">Precio: menor a mayor</option>
+              <option value="precio-desc">Precio: mayor a menor</option>
+              <option value="anio">Año: más antiguo</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-row" data-search-bar hidden>
+          <label class="sr-only" for="buscar">Buscar producto</label>
+          <input class="input" id="buscar" type="search" placeholder="Buscar modelo, marca o nickname…" data-search-input autocomplete="off">
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <section class="section" aria-label="Catálogo">
+      <div class="container">
+        <div class="grid-products" data-product-grid>
+
+          <article class="card" data-product-card data-order="1" data-type="basquetbol" data-name="Nike Dunk High Wu Tang" data-price="1800" data-year="1999">
+            <div class="card__media">
+              <img src="./assets/img/nike-dunk-high-wu-tang.webp" alt="Nike Dunk High Wu Tang" width="1408" height="768" loading="lazy">
+              <span class="card__badge badge badge--red">Limitada</span>
+              <button class="card__fav" type="button" data-fav aria-pressed="false" aria-label="Guardar Nike Dunk High Wu Tang">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"></path></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <p class="card__brand">Nike</p>
+              <h2 class="card__title">Dunk High <em>"Wu Tang."</em></h2>
+              <p class="card__meta">US 7.5 · 1999 · Cuero</p>
+              <p class="card__price">1.800 <small>USD</small></p>
+              <button class="btn btn--ghost btn--block card__action" type="button" data-add-to-cart="Nike Dunk High Wu Tang">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-card data-order="2" data-type="deportivo" data-name="Louis Vuitton x Nike Classic" data-price="6500" data-year="2022">
+            <div class="card__media">
+              <img src="./assets/img/lv-x-nike-classic.webp" alt="Louis Vuitton x Nike Classic" width="1408" height="768" loading="lazy">
+              <span class="card__badge badge badge--red">Limitada</span>
+              <button class="card__fav" type="button" data-fav aria-pressed="false" aria-label="Guardar Louis Vuitton x Nike Classic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"></path></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <p class="card__brand">Louis Vuitton x Nike</p>
+              <h2 class="card__title">Classic <em>"Monogram"</em></h2>
+              <p class="card__meta">US 9 · 2022 · Becerro</p>
+              <p class="card__price">6.500 <small>USD</small></p>
+              <button class="btn btn--ghost btn--block card__action" type="button" data-add-to-cart="Louis Vuitton x Nike Classic">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-card data-order="3" data-type="casual" data-name="Adidas Superstar Vintage" data-price="350" data-year="1980">
+            <div class="card__media">
+              <img src="./assets/img/adidas-superstar-vintage.webp" alt="Adidas Superstar Vintage" width="1408" height="768" loading="lazy">
+              <span class="card__badge badge badge--volt">Archivo</span>
+              <button class="card__fav" type="button" data-fav aria-pressed="false" aria-label="Guardar Adidas Superstar Vintage">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"></path></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <p class="card__brand">Adidas</p>
+              <h2 class="card__title">Superstar <em>"Vintage"</em></h2>
+              <p class="card__meta">US 8 · 1980 · Piel</p>
+              <p class="card__price">350 <small>USD</small></p>
+              <button class="btn btn--ghost btn--block card__action" type="button" data-add-to-cart="Adidas Superstar Vintage">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-card data-order="4" data-type="deportivo" data-name="Puma RS-X Modern" data-price="110" data-year="2020">
+            <div class="card__media">
+              <img src="./assets/img/puma-rs-x-modern.webp" alt="Puma RS-X Modern" width="1408" height="768" loading="lazy">
+              <button class="card__fav" type="button" data-fav aria-pressed="false" aria-label="Guardar Puma RS-X Modern">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"></path></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <p class="card__brand">Puma</p>
+              <h2 class="card__title">RS-X <em>"Modern"</em></h2>
+              <p class="card__meta">US 10 · 2020 · Mesh</p>
+              <p class="card__price">110 <small>USD</small></p>
+              <button class="btn btn--ghost btn--block card__action" type="button" data-add-to-cart="Puma RS-X Modern">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-card data-order="5" data-type="running" data-name="New Balance 990 Classic" data-price="180" data-year="2015">
+            <div class="card__media">
+              <img src="./assets/img/new-balance-990-classic.webp" alt="New Balance 990 Classic" width="1408" height="768" loading="lazy">
+              <span class="card__badge badge badge--volt">Archivo</span>
+              <button class="card__fav" type="button" data-fav aria-pressed="false" aria-label="Guardar New Balance 990 Classic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"></path></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <p class="card__brand">New Balance</p>
+              <h2 class="card__title">990 <em>"Classic"</em></h2>
+              <p class="card__meta">US 11 · 2015 · Suede</p>
+              <p class="card__price">180 <small>USD</small></p>
+              <button class="btn btn--ghost btn--block card__action" type="button" data-add-to-cart="New Balance 990 Classic">Añadir</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-card data-order="6" data-type="casual" data-name="Vans Old Skool Retro" data-price="85" data-year="1996">
+            <div class="card__media">
+              <img src="./assets/img/vans-old-skool-retro.webp" alt="Vans Old Skool Retro" width="1408" height="768" loading="lazy">
+              <button class="card__fav" type="button" data-fav aria-pressed="false" aria-label="Guardar Vans Old Skool Retro">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"></path></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <p class="card__brand">Vans</p>
+              <h2 class="card__title">Old Skool <em>"Retro"</em></h2>
+              <p class="card__meta">US 7 · 1996 · Canvas</p>
+              <p class="card__price">85 <small>USD</small></p>
+              <button class="btn btn--ghost btn--block card__action" type="button" data-add-to-cart="Vans Old Skool Retro">Añadir</button>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="eyebrow" data-filter-empty hidden style="padding:48px 0;">Sin resultados. Prueba otro filtro o término de búsqueda.</p>
+      </div>
+    </section>
+
+    <!-- EDITORIAL -->
+    <section class="container" id="archivo">
+      <div class="editorial">
+        <div>
+          <p class="eyebrow">Manifiesto / Curaduría</p>
+          <h2 class="editorial__quote" style="margin-top:18px;">No vendemos zapatos.<br><em>Archivamos cultura.</em></h2>
+        </div>
+        <div class="editorial__text">
+          <p>
+            Cada par en nuestro archivo ha sido rigurosamente autenticado por especialistas independientes
+            mediante inspección microscópica y procedencia verificada. No especulamos con la nostalgia;
+            preservamos la historia viva de la cultura urbana.
+          </p>
+          <a href="#coleccion">Conoce el archivo →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section--tight">
+      <div class="container">
+        <div class="newsletter">
+          <p class="eyebrow eyebrow--volt">Acceso prioritario</p>
+          <h2>Entra al drop list</h2>
+          <p>Recibe alertas privadas 15 minutos antes de cada liberación de archivo y accede a piezas no listadas.</p>
+          <form data-newsletter novalidate>
+            <label class="sr-only" for="newsletter-email">Correo electrónico</label>
+            <input class="input" id="newsletter-email" type="email" placeholder="tu@correo.com" required>
+            <button class="btn btn--primary" type="submit">Suscribirme</button>
+          </form>
+          <p class="eyebrow" data-newsletter-status hidden style="margin-top:16px;"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">Shoekos</p>
+          <p class="footer__claim">Archivo curado de sneakers de colección y piezas de culto.</p>
+          <span class="footer__chip">Bogotá · Archive</span>
+        </div>
+        <div>
+          <h3>Tienda</h3>
+          <ul>
+            <li><a href="#coleccion">Todos los drops</a></li>
+            <li><a href="#coleccion">Novedades</a></li>
+            <li><a href="#coleccion">Calzado de época</a></li>
+            <li><a href="#coleccion">Accesorios</a></li>
+            <li><a href="#coleccion">Colección privada</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Ayuda</h3>
+          <ul>
+            <li><a href="./contactenos.html">Proceso de autenticación</a></li>
+            <li><a href="./contactenos.html">Guía de tallas</a></li>
+            <li><a href="./contactenos.html">Envíos y seguros</a></li>
+            <li><a href="./contactenos.html">Cambios y garantía</a></li>
+            <li><a href="./contactenos.html">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Síguenos</h3>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram Archive</a></li>
+            <li><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="https://spotify.com" target="_blank" rel="noopener">Spotify playlists</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Shoekos Archive Bogotá. Todos los derechos reservados.</span>
+        <div class="payments">
+          <span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Crypto</span>
+        </div>
+      </div>
     </div>
-  </div>
-  <!-- FIN CARD 1-->
+  </footer>
 
-  <!-- INICIO CARD 2-->
-  <div class="card">
-    <img src="./assets/img/img2.jpg" class="card-img-top" alt="Louis Vuitton x Nike">
-    <div class="card-body">
-      <h6 class="card-title">Louis Vuitton x Nike <i>"Classic"</i></h6>
-      <ul>
-        <li><b>Talla: </b>US 9</li>
-        <li><b>Tipo: </b>Deportivo</li>
-        <li><b>Modelo: </b>LV x Nike</li>
-        <li><b>Año: </b>2022</li>
-      </ul>
-      <p class="card-text">
-      <h3>17.800 USD.</h3>
-      </p>
-      <a class="btn btn-primary add-to-cart" data-product="Louis Vuitton x Nike" data-price="17800">Añadir al Carrito</a>
-    </div>
-  </div>
-  <!-- FIN CARD 2-->
-
-  <!-- INICIO CARD 3-->
-  <div class="card">
-    <img src="./assets/img/img3.jpg" class="card-img-top" alt="Adidas Superstar">
-    <div class="card-body">
-      <h6 class="card-title">Adidas Superstar <i>"Vintage"</i></h6>
-      <ul>
-        <li><b>Talla: </b>US 8</li>
-        <li><b>Tipo: </b>Casual</li>
-        <li><b>Modelo: </b>Superstar</li>
-        <li><b>Año: </b>1980</li>
-      </ul>
-      <p class="card-text">
-      <h3>12.000 USD.</h3>
-      </p>
-      <a class="btn btn-primary add-to-cart" data-product="Adidas Superstar" data-price="12000">Añadir al Carrito</a>
-    </div>
-  </div>
-  <!-- FIN CARD 3-->
-</div>
-
-  <!-- INICIO CARD 4-->
-  <div class="card">
-    <img src="./assets/img/img4.jpg" class="card-img-top" alt="Puma RS-X">
-    <div class="card-body">
-      <h6 class="card-title">Puma RS-X <i>"Modern"</i></h6>
-      <ul>
-        <li><b>Talla: </b>US 10</li>
-        <li><b>Tipo: </b>Deportivo</li>
-        <li><b>Modelo: </b>RS-X</li>
-        <li><b>Año: </b>2020</li>
-      </ul>
-      <p class="card-text">
-      <h3>22.000 USD.</h3>
-      </p>
-      <a class="btn btn-primary" onclick="toggleCartItem(this, 'Puma RS-X Modern', 22000)">Añadir al Carrito</a>
-      
-    </div>
-  </div>
-  <!-- FIN CARD 4-->
-
-  <!-- INICIO CARD 5-->
-  <div class="card">
-    <img src="./assets/img/img5.jpg" class="card-img-top" alt="New Balance 990">
-    <div class="card-body">
-      <h6 class="card-title">New Balance 990 <i>"Classic"</i></h6>
-      <ul>
-        <li><b>Talla: </b>US 11</li>
-        <li><b>Tipo: </b>Running</li>
-        <li><b>Modelo: </b>990</li>
-        <li><b>Año: </b>2015</li>
-      </ul>
-      <p class="card-text">
-      <h3>19.000 USD.</h3>
-      </p>
-      <a class="btn btn-primary" onclick="toggleCartItem(this, 'New Balance 990 Classic', 19000)">Añadir al Carrito</a>
-      <script src="./assets/js/script.js"></script>
-    </div>
-  </div>
-  <!-- FIN CARD 5-->
-
-  <!-- INICIO CARD 6-->
-  <div class="card">
-    <img src="./assets/img/img6.jpg" class="card-img-top" alt="Vans Old Skool">
-    <div class="card-body">
-      <h6 class="card-title">Vans Old Skool <i>"Retro"</i></h6>
-      <ul>
-        <li><b>Talla: </b>US 7</li>
-        <li><b>Tipo: </b>Casual</li>
-        <li><b>Modelo: </b>Old Skool</li>
-        <li><b>Año: </b>1996</li>
-      </ul>
-      <p class="card-text">
-      <h3>10.000 USD.</h3>
-      </p>
-      <a class="btn btn-primary" onclick="toggleCartItem(this, 'Vans Old Skool Retro', 10000)">Añadir al Carrito</a>
-      <script src="./assets/js/script.js"></script>
-    </div>
-  </div>
-  <!-- FIN CARD 6-->
-<script>
-    // Función para agregar al carrito con jQuery
-    function toggleCartItem(button, product, price) {
-        // Aquí puedes manipular lo que ocurre al hacer clic en "Añadir al carrito"
-        alert(`Producto añadido: ${product} por ${price} USD`);
-    }
-
-    // Usar jQuery para capturar el evento click en las cartas del carrito
-    $(document).ready(function() {
-        $('.add-to-cart').click(function() {
-            let product = $(this).data('product');
-            let price = $(this).data('price');
-            toggleCartItem(this, product, price);
-        });
-    });
-</script>
-
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <script src="./assets/js/site.js" defer></script>
 </body>
+
 </html>

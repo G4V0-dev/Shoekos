@@ -1,84 +1,255 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contáctenos - Shoekos</title>
-    <link rel="stylesheet" href="./assets/css/contactenos.css">
-    <link rel="stylesheet" href="./assets/css/css_bootstrap/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hablemos — Shoekos</title>
+  <meta name="description" content="Soporte Shoekos: autenticación, tallas, envíos y devoluciones. Atención especializada para coleccionistas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/site.css">
 </head>
 
 <body>
-    <!-- INICIO NAVBAR-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i><b>Shoekos</b></i></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Contáctenos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Carrito de Compras</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- FIN NAVBAR-->
 
-    <div class="container">
-        <h1>Contáctenos</h1>
-        <p>Si tiene alguna pregunta o comentario, no dude en ponerse en contacto con nosotros. Estaremos encantados de
-            ayudarle.</p>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="./index.html">Shoekos</a>
 
-        <!-- FORMULARIO DE CONTACTO -->
-        <div class="contact-form">
-            <form id="contact-form">
-                <input type="text" name="nombre" placeholder="Nombre" required>
-                <input type="email" name="email" placeholder="Correo Electrónico" required>
-                <textarea name="mensaje" rows="5" placeholder="Mensaje" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
+      <nav class="nav__links" data-nav-links aria-label="Principal">
+        <a class="nav__link" href="./index.html">Colección</a>
+        <a class="nav__link" href="./index.html#archivo">Archivo</a>
+        <a class="nav__link" href="./contactenos.html" aria-current="page">Contáctenos</a>
+      </nav>
 
-            <!-- jQuery script -->
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <div class="nav__actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Activar modo claro">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+          </svg>
+        </button>
 
-            <script>
-                // Manejador del evento submit usando jQuery
-                $('#contact-form').on('submit', function (event) {
-                    event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-                    const nombre = $('input[name="nombre"]').val(); // Obtener el valor del campo nombre
-                    alert('Formulario enviado. Gracias por contactarnos, ' + nombre + '.'); // Mostrar mensaje de éxito
-                });
-            </script>
-        </div>
+        <a class="icon-btn" href="./index.html#coleccion" aria-label="Buscar en la colección">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.5-3.5"></path>
+          </svg>
+        </a>
 
-        <!-- ÍCONOS DE REDES SOCIALES -->
-        <div class="social-icons">
-            <a href="https://www.instagram.com/snkrs_bta2" target="_blank" class="instagram" title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/share/xzPwStrZW8EQKkMr/?mibextid=qi2Omg" target="_blank" class="facebook" title="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://api.whatsapp.com/message/VLTPIGGSXIZGB1?autoload=1&app_absent=0" target="_blank" class="whatsapp" title="Contactar por WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
+        <a class="icon-btn" href="./compras.html" aria-label="Carrito de compras">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M5 7h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z"></path>
+            <path d="M9 7V5.5a3 3 0 0 1 6 0V7"></path>
+          </svg>
+          <span class="nav__count" data-cart-count hidden>0</span>
+        </a>
+
+        <button class="icon-btn nav__toggle" type="button" data-nav-toggle aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <!-- Scripts de Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <main>
+    <div class="container">
+      <header class="contact-head">
+        <p class="eyebrow eyebrow--volt">● Soporte</p>
+        <h1>Hablemos</h1>
+        <p>Atención especializada para coleccionistas, consultas de archivo y seguimiento de pedidos en bóveda.</p>
+      </header>
+
+      <div class="contact-layout">
+        <aside class="contact-aside">
+          <p>
+            Cada silueta en Shoekos pasa por un protocolo estricto de autenticación óptica y verificación
+            de procedencia. Si tienes inquietudes sobre un drop, estado de conservación o custodia de
+            piezas especiales, nuestro equipo de archivo te asiste directamente.
+          </p>
+
+          <div class="hours">
+            <span class="eyebrow">Horario de atención</span>
+            <strong>LUN–SÁB 10:00–19:00</strong>
+            <small>Bogotá (GMT-5)</small>
+          </div>
+
+          <div class="contact-list">
+            <a class="contact-row" href="https://wa.me/573000000000" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L4 20l1.2-4.2A8.5 8.5 0 1 1 21 11.5Z"></path></svg>
+              <span>
+                <span class="label">WhatsApp directo</span>
+                <span class="value">+57 300 000 0000</span>
+              </span>
+              <span class="arrow">↗</span>
+            </a>
+
+            <a class="contact-row" href="mailto:hola@shoekos.co">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+              <span>
+                <span class="label">Correo electrónico</span>
+                <span class="value">hola@shoekos.co</span>
+              </span>
+              <span class="arrow">↗</span>
+            </a>
+
+            <a class="contact-row" href="https://instagram.com" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle cx="17" cy="7" r="0.8" fill="currentColor"></circle></svg>
+              <span>
+                <span class="label">Canal oficial</span>
+                <span class="value">@shoekos</span>
+              </span>
+              <span class="arrow">↗</span>
+            </a>
+
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+              <span>
+                <span class="label">Sede central</span>
+                <span class="value">Bogotá, Colombia — Zona Rosa</span>
+              </span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="form-card">
+          <div class="form-card__head">
+            <h2>Transmitir mensaje</h2>
+            <span class="eyebrow">Canal encriptado</span>
+          </div>
+
+          <form data-contact-form novalidate>
+            <div class="field--row">
+              <div class="field">
+                <label for="nombre">Nombre</label>
+                <input class="input" id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input class="input" id="email" name="email" type="email" placeholder="tu@correo.com" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="asunto">Asunto</label>
+              <select class="input select" id="asunto" name="asunto" required>
+                <option value="pedido">Pedido</option>
+                <option value="talla">Talla y stock</option>
+                <option value="devolucion">Devolución</option>
+                <option value="prensa">Prensa</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="mensaje">Mensaje</label>
+              <textarea class="input" id="mensaje" name="mensaje" placeholder="Describe tu solicitud o referencia de archivo…" required></textarea>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" name="datos" required>
+              <span>Acepto la política de datos y tratamiento de información personal.</span>
+            </label>
+
+            <button class="btn btn--primary btn--block" type="submit">Enviar mensaje</button>
+            <p class="eyebrow" data-form-status role="status" aria-live="polite" hidden style="margin-top:16px;"></p>
+          </form>
+        </div>
+      </div>
+
+      <section class="section--tight" style="padding-top:0;">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Información general</p>
+            <h2 class="section__title" style="margin-top:10px;">Preguntas frecuentes</h2>
+          </div>
+          <span class="eyebrow">3 consultas registradas</span>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>¿Cómo verifico la autenticidad?</summary>
+            <p>
+              Todas las piezas cuentan con doble verificación física bajo luz UV, datación de polímeros
+              y precinto inviolable numerado con certificado criptográfico de procedencia.
+            </p>
+          </details>
+          <details>
+            <summary>¿Hacen envíos nacionales?</summary>
+            <p>
+              Sí. Enviamos a todo el país con seguro de tránsito incluido. Bogotá en 24 h y ciudades
+              principales en 2–4 días hábiles.
+            </p>
+          </details>
+          <details>
+            <summary>¿Puedo cambiar la talla?</summary>
+            <p>
+              Tienes 30 días para cambios, siempre que la pieza conserve el precinto de autenticación
+              y no haya sido usada.
+            </p>
+          </details>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">Shoekos</p>
+          <p class="footer__claim">Archivo curado de sneakers de colección y piezas de culto.</p>
+          <span class="footer__chip">Bogotá · Archive</span>
+        </div>
+        <div>
+          <h3>Tienda</h3>
+          <ul>
+            <li><a href="./index.html#coleccion">Todos los drops</a></li>
+            <li><a href="./index.html#coleccion">Novedades</a></li>
+            <li><a href="./index.html#coleccion">Calzado de época</a></li>
+            <li><a href="./index.html#coleccion">Accesorios</a></li>
+            <li><a href="./index.html#coleccion">Colección privada</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Ayuda</h3>
+          <ul>
+            <li><a href="./contactenos.html">Proceso de autenticación</a></li>
+            <li><a href="./contactenos.html">Guía de tallas</a></li>
+            <li><a href="./contactenos.html">Envíos y seguros</a></li>
+            <li><a href="./contactenos.html">Cambios y garantía</a></li>
+            <li><a href="./contactenos.html">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Síguenos</h3>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram Archive</a></li>
+            <li><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="https://spotify.com" target="_blank" rel="noopener">Spotify playlists</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Shoekos Archive Bogotá. Todos los derechos reservados.</span>
+        <div class="payments">
+          <span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Crypto</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <script src="./assets/js/site.js" defer></script>
 </body>
 
 </html>

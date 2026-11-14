@@ -1,133 +1,261 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras - Shoekos</title>
-    <link rel="stylesheet" href="./assets/css/compras.css">
-    <link rel="stylesheet" href="./assets/css/css_bootstrap/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu carrito — Shoekos</title>
+  <meta name="description" content="Revisa las piezas de tu carrito en Shoekos. Envío gratis y autenticidad garantizada.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/site.css">
 </head>
 
-<body>
-    <!-- INICIO NAVBAR-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i><b>Shoekos</b></i></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contactenos.html">Contáctenos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Carrito de Compras</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <!-- FIN NAVBAR-->
+<body class="has-cart-bar">
 
-    <div class="container">
-        <h1>Carrito de Compras</h1>
-        <p>Estos son los productos que has añadido a tu carrito:</p>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="./index.html">Shoekos</a>
 
-        <!-- TABLA DEL CARRITO -->
-        <table class="cart-table">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                </tr>
-            </thead>
-            <tbody id="cart-items">
-                
-            </tbody>
-        </table>
+      <nav class="nav__links" data-nav-links aria-label="Principal">
+        <a class="nav__link" href="./index.html">Colección</a>
+        <a class="nav__link" href="./index.html#archivo">Archivo</a>
+        <a class="nav__link" href="./contactenos.html">Contáctenos</a>
+      </nav>
 
-        <script>function renderCart() {
-                const cartItemsContainer = document.getElementById('cart-items');
-                const totalPriceElement = document.getElementById('total-price');
-                cartItemsContainer.innerHTML = '';
-                let totalPrice = 0;
+      <div class="nav__actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Activar modo claro">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+          </svg>
+        </button>
 
-                if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = '<tr><td colspan="2">El carrito está vacío</td></tr>';
-                    totalPriceElement.textContent = '0';
-                    return;
-                }
+        <a class="icon-btn" href="./index.html#coleccion" aria-label="Buscar en la colección">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.5-3.5"></path>
+          </svg>
+        </a>
 
-                cart.forEach(item => {
-                    const row = document.createElement('tr');
-                    const nameCell = document.createElement('td');
-                    const priceCell = document.createElement('td');
+        <a class="icon-btn" href="./compras.html" aria-label="Carrito de compras" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M5 7h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z"></path>
+            <path d="M9 7V5.5a3 3 0 0 1 6 0V7"></path>
+          </svg>
+          <span class="nav__count" data-cart-count>2</span>
+        </a>
 
-                    nameCell.textContent = item.name;
-                    priceCell.textContent = item.price.toFixed(2) + ' USD';
-
-                    row.appendChild(nameCell);
-                    row.appendChild(priceCell);
-                    cartItemsContainer.appendChild(row);
-
-                    totalPrice += item.price;
-                });
-
-                totalPriceElement.textContent = totalPrice.toFixed(2);
-            }
-</script>
-        <div class="total">
-            Total a pagar: <span id="total-price">0</span> USD
-        </div>
-
-        <button class="checkout-button" onclick="checkout()">Proceder al Pago</button>
+        <button class="icon-btn nav__toggle" type="button" data-nav-toggle aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <script>
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  <main>
+    <div class="container">
+      <div class="page-head">
+        <nav class="breadcrumb" aria-label="Migas de pan">
+          <a href="./index.html">Inicio</a><span>/</span><span>Carrito</span>
+        </nav>
+        <div class="page-title">
+          <h1>Tu carrito</h1>
+          <span class="badge badge--muted"><span data-pieces>2</span> piezas</span>
+        </div>
+      </div>
 
-        function renderCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const totalPriceElement = document.getElementById('total-price');
-            cartItemsContainer.innerHTML = '';
-            let totalPrice = 0;
+      <div class="cart-layout" data-cart-content>
+        <div class="cart-main">
+          <div class="cart-items" data-cart-items>
 
-            cart.forEach(item => {
-                const row = document.createElement('tr');
-                const nameCell = document.createElement('td');
-                const priceCell = document.createElement('td');
+            <article class="cart-item" data-cart-row data-price="1800">
+              <div class="cart-item__thumb">
+                <img src="./assets/img/nike-dunk-high-wu-tang.webp" alt="Nike Dunk High Wu Tang" width="88" height="88" loading="lazy">
+              </div>
+              <div class="cart-item__info">
+                <h2 class="cart-item__name">Dunk High <em>"Wu Tang."</em></h2>
+                <p class="cart-item__meta"><span>Nike</span><span>US 7.5</span><span>1999</span></p>
+                <button class="cart-item__remove" type="button" data-remove>Eliminar</button>
+              </div>
+              <div class="cart-item__end">
+                <div class="qty">
+                  <button type="button" data-qty-minus aria-label="Quitar una unidad">−</button>
+                  <output data-qty>1</output>
+                  <button type="button" data-qty-plus aria-label="Añadir una unidad">+</button>
+                </div>
+                <p class="cart-item__price">1.800 <small>USD</small></p>
+              </div>
+            </article>
 
-                nameCell.textContent = item.name;
-                priceCell.textContent = item.price.toFixed(2) + ' USD';
+            <article class="cart-item" data-cart-row data-price="85">
+              <div class="cart-item__thumb">
+                <img src="./assets/img/vans-old-skool-retro.webp" alt="Vans Old Skool Retro" width="88" height="88" loading="lazy">
+              </div>
+              <div class="cart-item__info">
+                <h2 class="cart-item__name">Old Skool <em>"Retro"</em></h2>
+                <p class="cart-item__meta"><span>Vans</span><span>US 7</span><span>1996</span></p>
+                <button class="cart-item__remove" type="button" data-remove>Eliminar</button>
+              </div>
+              <div class="cart-item__end">
+                <div class="qty">
+                  <button type="button" data-qty-minus aria-label="Quitar una unidad">−</button>
+                  <output data-qty>1</output>
+                  <button type="button" data-qty-plus aria-label="Añadir una unidad">+</button>
+                </div>
+                <p class="cart-item__price">85 <small>USD</small></p>
+              </div>
+            </article>
 
-                row.appendChild(nameCell);
-                row.appendChild(priceCell);
-                cartItemsContainer.appendChild(row);
+          </div>
+        </div>
 
-                totalPrice += item.price;
-            });
+        <aside class="summary" aria-label="Resumen del pedido">
+          <div class="summary__head">
+            <h2>Resumen del pedido</h2>
+            <span class="badge badge--muted">Bogotá HQ</span>
+          </div>
 
-            totalPriceElement.textContent = totalPrice.toFixed(2);
-        }
+          <p class="summary__row"><span>Subtotal</span><strong data-subtotal>1.885 USD</strong></p>
+          <p class="summary__row summary__row--free"><span>Envío</span><strong>Gratis</strong></p>
+          <p class="summary__row"><span>Tarifa de autenticación</span><strong>Cortesía</strong></p>
 
-        function checkout() {
-            alert('Procediendo al pago. Total a pagar: ' + document.getElementById('total-price').textContent + ' USD');
-            // Lógica para proceder al pago
-        }
+          <div class="summary__total">
+            <span>Total</span>
+            <output data-total>1.885 USD</output>
+          </div>
 
-        document.addEventListener('DOMContentLoaded', renderCart);
-    </script>
+          <div class="summary__promo">
+            <label class="sr-only" for="promo">Código de archivo</label>
+            <input class="input" id="promo" type="text" placeholder="Código de archivo" autocomplete="off">
+            <button type="button">Aplicar</button>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="button" data-checkout>Finalizar compra</button>
+          <p class="summary__note">Pago seguro · Contraentrega disponible</p>
+        </aside>
+      </div>
+
+      <div class="cart-empty" data-cart-empty hidden>
+        <h2>Tu carrito está vacío</h2>
+        <p>Vuelve al archivo y elige tu próxima pieza.</p>
+        <a class="btn btn--primary" href="./index.html#coleccion">Explorar colección</a>
+      </div>
+
+      <section class="section--tight" style="padding-top:0;">
+        <div class="section__head">
+          <h2 class="section__title">Completa el drop</h2>
+          <a class="eyebrow" href="./index.html#coleccion">Ver todo →</a>
+        </div>
+
+        <div class="grid-products">
+          <article class="card">
+            <div class="card__media">
+              <img src="./assets/img/lv-x-nike-classic.webp" alt="Louis Vuitton x Nike Classic" width="1408" height="768" loading="lazy">
+              <span class="card__badge badge badge--red">Limitada</span>
+            </div>
+            <div class="card__body">
+              <p class="card__brand">Louis Vuitton x Nike</p>
+              <h3 class="card__title">Classic <em>"Monogram"</em></h3>
+              <p class="card__meta">US 9 · 2022 · Becerro</p>
+              <p class="card__price">6.500 <small>USD</small></p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media">
+              <img src="./assets/img/adidas-superstar-vintage.webp" alt="Adidas Superstar Vintage" width="1408" height="768" loading="lazy">
+              <span class="card__badge badge badge--volt">Archivo</span>
+            </div>
+            <div class="card__body">
+              <p class="card__brand">Adidas</p>
+              <h3 class="card__title">Superstar <em>"Vintage"</em></h3>
+              <p class="card__meta">US 8 · 1980 · Piel</p>
+              <p class="card__price">350 <small>USD</small></p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media">
+              <img src="./assets/img/puma-rs-x-modern.webp" alt="Puma RS-X Modern" width="1408" height="768" loading="lazy">
+            </div>
+            <div class="card__body">
+              <p class="card__brand">Puma</p>
+              <h3 class="card__title">RS-X <em>"Modern"</em></h3>
+              <p class="card__meta">US 10 · 2020 · Mesh</p>
+              <p class="card__price">110 <small>USD</small></p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="cart-bar" data-cart-bar>
+    <div class="cart-bar__total">
+      <span>Total estimado</span>
+      <output data-total>1.885 USD</output>
+    </div>
+    <button class="btn btn--primary btn--sm" type="button" data-checkout>Finalizar</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">Shoekos</p>
+          <p class="footer__claim">Archivo curado de sneakers de colección y piezas de culto.</p>
+          <span class="footer__chip">Bogotá · Archive</span>
+        </div>
+        <div>
+          <h3>Tienda</h3>
+          <ul>
+            <li><a href="./index.html#coleccion">Todos los drops</a></li>
+            <li><a href="./index.html#coleccion">Novedades</a></li>
+            <li><a href="./index.html#coleccion">Calzado de época</a></li>
+            <li><a href="./index.html#coleccion">Accesorios</a></li>
+            <li><a href="./index.html#coleccion">Colección privada</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Ayuda</h3>
+          <ul>
+            <li><a href="./contactenos.html">Proceso de autenticación</a></li>
+            <li><a href="./contactenos.html">Guía de tallas</a></li>
+            <li><a href="./contactenos.html">Envíos y seguros</a></li>
+            <li><a href="./contactenos.html">Cambios y garantía</a></li>
+            <li><a href="./contactenos.html">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Síguenos</h3>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram Archive</a></li>
+            <li><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="https://spotify.com" target="_blank" rel="noopener">Spotify playlists</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Shoekos Archive Bogotá. Todos los derechos reservados.</span>
+        <div class="payments">
+          <span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Crypto</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <script src="./assets/js/site.js" defer></script>
 </body>
 
 </html>
