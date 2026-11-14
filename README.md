@@ -1,27 +1,21 @@
 # Shoekos
 
-Landing de e-commerce para un archivo curado de sneakers de colección. Sitio estático (HTML, CSS y JavaScript sin dependencias), pensado para publicarse en GitHub Pages.
+Landing de e-commerce para un archivo curado de sneakers de colección. Sitio estático en HTML, CSS y JavaScript sin dependencias, sin build.
 
 ![Shoekos](assets/img/og-shoekos.jpg)
 
 ## Estado
 
-Remaster completo del sitio original: mismo dominio conceptual (catálogo de 6 piezas, carrito y contacto), nuevo sistema visual, nueva estructura y suite de pruebas reescrita.
+Remaster completo del sitio original: mismo alcance (catálogo de 6 piezas, carrito y contacto), nuevo sistema visual, nueva estructura y suite de pruebas reescrita.
 
-## Demo local
-
-```bash
-npm install                      # solo para los tests (Playwright)
-npm run serve                    # http://127.0.0.1:8080
-```
-
-También sirve cualquier servidor estático:
+## Ejecución local
 
 ```bash
-python3 -m http.server 8080
+npm install
+npm run serve
 ```
 
-> No hay build ni paso de compilación: los archivos se publican tal cual.
+Sirve en `http://127.0.0.1:8080`. Cualquier servidor estático funciona igual. No hay paso de compilación: los archivos se publican tal cual.
 
 ## Estructura
 
@@ -33,12 +27,13 @@ python3 -m http.server 8080
 ├── assets/
 │   ├── css/site.css        # Tokens + todos los componentes (único CSS)
 │   ├── js/site.js          # Tema, filtros, búsqueda, carrito demo, validaciones
-│   └── img/                # Imágenes del hero y producto (.webp) + og-image
+│   └── img/                # Imágenes de producto (.webp) + og-image
 ├── docs/stitch/
 │   ├── DESIGN.md           # Design system: tokens, tipografía, componentes, páginas
 │   └── prompts.md          # Prompts usados para generar los mockups en Stitch
 ├── tests/                  # Playwright: smoke, carrito, contacto
 ├── legacy/                 # Versión anterior (Bootstrap + jQuery), no referenciada
+├── .nojekyll               # Evita el procesamiento de Jekyll en GitHub Pages
 └── playwright.config.ts
 ```
 
@@ -50,7 +45,7 @@ python3 -m http.server 8080
 | Filtros | Por tipo (basquetbol, casual, running, deportivo) con contador en vivo |
 | Búsqueda | Filtra el catálogo por marca, modelo o nickname |
 | Orden | Destacados, precio asc/desc, año |
-| Carrito demo | Añadir desde el home actualiza el badge y muestra un toast; en `compras.html` se pueden cambiar cantidades, eliminar piezas y ver el total recalcularse |
+| Carrito demo | Añadir desde el home actualiza el badge y muestra un toast; en `compras.html` se cambian cantidades, se eliminan piezas y el total se recalcula |
 | Estado vacío | Aparece al eliminar todas las piezas del carrito |
 | Tema | Oscuro por defecto, claro opcional; respeta `prefers-color-scheme` y persiste en `localStorage` |
 | Contacto | Validación de campos, email y política de datos; FAQ desplegable |
@@ -58,26 +53,22 @@ python3 -m http.server 8080
 | Responsive | 3 columnas → 2 → 1, navbar con menú móvil y barra de compra fija en el carrito |
 | Accesibilidad | Foco visible, etiquetas asociadas, `aria-*` en controles, contraste AA, `prefers-reduced-motion` |
 
-## Qué NO hace
-
-Estas limitaciones son intencionales para un sitio estático en GitHub Pages:
+## Qué no hace
 
 - **No procesa pagos.** El botón “Finalizar compra” solo muestra un aviso de demo.
-- **No envía correos.** El formulario valida y confirma en pantalla, pero no hay backend ni servicio conectado.
-- **El carrito no persiste entre páginas.** Vive en memoria: al navegar se reinicia con las dos piezas de ejemplo de `compras.html`.
+- **No envía correos.** El formulario valida y confirma en pantalla, sin backend ni servicio conectado.
+- **El carrito no persiste entre páginas.** Vive en memoria; al navegar se reinicia con las dos piezas de ejemplo de `compras.html`.
 - **No hay cuentas, login ni stock real.** Los productos están escritos en el HTML.
 - **No hay panel de administración ni base de datos.**
 - **Búsqueda y filtros son del lado del cliente**, sobre las 6 piezas presentes en la página.
 - **Sin analítica ni cookies de terceros.**
 
-Para convertirlo en tienda real habría que añadir pasarela de pago (Stripe/Wompi/Mercado Pago), un backend de pedidos e inventario, y un servicio de correo (Formspree, Resend, etc.).
-
 ## Diseño
 
-El sistema visual se generó con **Google Stitch** y luego se tradujo a CSS propio.
+El sistema visual se generó con **Google Stitch** y se tradujo a CSS propio.
 
 - Proyecto en Stitch: `https://stitch.withgoogle.com/projects/8336219123257505995`
-- Design system documentado: [`docs/stitch/DESIGN.md`](docs/stitch/DESIGN.md)
+- Design system: [`docs/stitch/DESIGN.md`](docs/stitch/DESIGN.md)
 - Prompts de las 12 pantallas (3 páginas × desktop/mobile × dark/light): [`docs/stitch/prompts.md`](docs/stitch/prompts.md)
 
 Decisiones clave:
@@ -91,7 +82,7 @@ Decisiones clave:
 
 - **HTML5** semántico, sin framework.
 - **CSS** con custom properties (tokens), Grid y Flexbox; un solo archivo.
-- **JavaScript** ES5-compatible en sintaxis, sin dependencias ni bundler.
+- **JavaScript** sin dependencias ni bundler.
 - **Google Fonts** (Anton, Inter, JetBrains Mono) con `preconnect` y `display=swap`.
 - **Playwright** para pruebas end-to-end.
 - **GitHub Pages** como hosting.
@@ -99,32 +90,22 @@ Decisiones clave:
 ## Pruebas
 
 ```bash
-npm test              # suite completa (levanta el servidor solo)
-npm run test:headed   # navegador visible
-npm run test:ui       # modo interactivo
-npm run test:report   # reporte HTML del último run
+npm test
+npm run test:headed
+npm run test:ui
+npm run test:report
 ```
 
-Cobertura actual: 23 pruebas en Chromium.
+23 pruebas en Chromium:
 
 - `tests/smoke.spec.ts` — home, catálogo, badges, filtros, búsqueda, carrito, tema, newsletter y navegación.
 - `tests/carrito.spec.ts` — totales, cantidades, eliminación, estado vacío y barra móvil.
 - `tests/contacto.spec.ts` — validaciones, política de datos y FAQ.
 
-## Publicar en GitHub Pages
-
-1. Sube los cambios a `main`.
-2. En el repositorio: **Settings → Pages**.
-3. En *Source* elige **Deploy from a branch**.
-4. Branch: **main**, carpeta: **/ (root)**. Guarda.
-5. En 1–2 minutos el sitio queda en `https://<usuario>.github.io/Shoekos/`.
-
-El archivo `.nojekyll` desactiva el procesamiento de Jekyll para que los archivos se sirvan sin filtros.
-
 ## Imágenes
 
-Las fotos de producto y el hero fueron generadas con Stitch/Gemini para el mockup y se incluyen como material de demostración. Son imágenes sintéticas con siluetas de modelos reales: si publicas el proyecto de forma comercial, reemplázalas por fotografía propia o licenciada.
+Las fotos de producto y el hero fueron generadas con Stitch/Gemini para el mockup. Son imágenes sintéticas con siluetas de modelos reales; su uso comercial no está licenciado, por lo que deben reemplazarse por fotografía propia o licenciada.
 
 ## Legacy
 
-`legacy/` conserva la versión anterior del sitio (Bootstrap 5 + jQuery, CSS duplicado, carrito con `alert`). No se referencia desde las páginas actuales y se mantiene solo como referencia histórica.
+`legacy/` conserva la versión anterior del sitio (Bootstrap 5 + jQuery, CSS duplicado, carrito con `alert`). No se referencia desde las páginas actuales y se mantiene como referencia histórica.
