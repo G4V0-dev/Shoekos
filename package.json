@@ -2,7 +2,7 @@
   "name": "shoekos",
   "version": "1.0.0",
   "private": true,
-  "description": "Sitio estático de e-commerce Shoekos (HTML, Bootstrap y jQuery)",
+  "description": "Landing estática de e-commerce Shoekos (HTML, CSS y JavaScript sin dependencias)",
   "scripts": {
     "serve": "python3 -m http.server 8080",
     "test": "playwright test",
